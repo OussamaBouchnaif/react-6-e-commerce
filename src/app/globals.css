@@ -3,4 +3,32 @@
 @tailwind components;
 @tailwind utilities;
 
+.buttom-header-item {
+    @apply flex items-center gap-1 h-8 px-2 border border-transparent hover:border-white cursor-pointer duration-300;
+  }
+  
+  .buttom-header-container {
+    @apply w-full h-10 bg-amazon_light text-sm text-white px-4 flex items-center;
+  }
+  
+
+  .header-item {
+    @apply px-2 border border-transparent hover:border-white cursor-pointer duration-300 flex items-center h-[70%];
+  }
+  
+
+  .header-text {
+    @apply text-xs text-gray-100 flex flex-col justify-center;
+  }
+  
+
+  .search-input {
+    @apply w-full h-full rounded-md px-2 placeholder:text-sm text-base text-black border-[3px] border-transparent outline-none focus-visible:border-amazon_yellow;
+  }
+  
+
+  .header-container {
+    @apply w-full h-20 bg-amazon_blue text-lightText sticky top-0 z-50;
+  }
+  
 
