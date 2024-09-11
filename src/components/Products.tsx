@@ -5,12 +5,15 @@ import { FaHeart } from 'react-icons/fa6';
 import { HiShoppingCart } from 'react-icons/hi';
 import FormattedPrice from './FormattedPrice';
 import Image from 'next/image';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '@/store/cartSlice';
 
 interface Props {
     product: Product[];
   }
   
   const Products = ({ product }: Props) => {
+    const dispatch = useDispatch();
   return (
     <div className="w-full px-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
       {product.map(
@@ -90,7 +93,20 @@ interface Props {
                 {description.substring(0, 120)}
               </p>
               <button
-                
+                onClick={() => 
+                  dispatch(addToCart({
+                    _id : _id,
+                    title:title,
+                    brand:brand,
+                    category:category,
+                    description:description,
+                    image:image,
+                    isNew:isNew,
+                    oldPrice:oldPrice,
+                    price:price,
+                    quantity:1
+                  }))
+                }
                 className="h-10 font-medium bg-amazon_blue text-white rounded-md hover:bg-amazon_yellow hover:text-black duration-300 mt-2"
               >
                 add to cart

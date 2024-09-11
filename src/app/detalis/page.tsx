@@ -1,11 +1,12 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import FormattedPrice from "@/components/FormattedPrice";
+
 import Image from "next/image";
 import React from "react";
 import { FaHeart } from "react-icons/fa";
 import { HiShoppingCart } from "react-icons/hi";
+import FormattedPrice from "@/components/FormattedPrice";
 
 const DetailsPage = () => {
   const searchParams = useSearchParams();
