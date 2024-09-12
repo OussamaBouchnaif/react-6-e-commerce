@@ -7,18 +7,26 @@ import { HiOutlineSearch } from "react-icons/hi";
 import { BiCaretDown } from "react-icons/bi";
 import CartIcon from "../../images/cartIcon.png";
 import Link from "next/link";
+import { RootState } from "@/store/store";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
+  const { productData } = useSelector((state: RootState) => state.cart);
+
+  const totalItems = productData.reduce((acc, item) => acc + item.quantity, 0);
   return (
     <>
       <div className="header-container">
         <div className="h-full w-full mx-auto inline-flex items-center justify-between gap-1 px-4">
-          
           {/* Logo */}
-          <Link href={'/'} className="header-item justify-center">
-            <Image className="w-28 object-cover mt-1" src={logo} alt="logoImg" />
+          <Link href={"/"} className="header-item justify-center">
+            <Image
+              className="w-28 object-cover mt-1"
+              src={logo}
+              alt="logoImg"
+            />
           </Link>
-          
+
           {/* Location */}
           <div className="header-item hidden xl:inline-flex gap-1">
             <FaLocationDot />
@@ -39,7 +47,7 @@ export const Header = () => {
               <HiOutlineSearch />
             </span>
           </div>
-          
+
           {/* Account & Lists */}
           <div className="header-text header-item">
             <p>Hello</p>
@@ -47,7 +55,7 @@ export const Header = () => {
               Account & Lists <BiCaretDown />
             </p>
           </div>
-          
+
           {/* Marked & Favorite */}
           <div className="header-text header-item">
             <p>Marked</p>
@@ -55,15 +63,19 @@ export const Header = () => {
           </div>
 
           {/* Cart Icon */}
-          <Link href={'/cart'} className="header-item relative">
-            <Image className="w-auto object-cover h-8" src={CartIcon} alt="CartIcon" />
+          <Link href={"/cart"} className="header-item relative">
+            <Image
+              className="w-auto object-cover h-8"
+              src={CartIcon}
+              alt="CartIcon"
+            />
             <p className="text-xs text-white font-bold mt-3">Cart</p>
-            <span className="absolute text-amazon_yellow text-xs top-2 left-[29px] font-semibold">0</span>
+            <span className="absolute text-amazon_yellow text-xs top-2 left-[29px] font-semibold">
+              {totalItems}
+            </span>
           </Link>
-
         </div>
       </div>
     </>
   );
 };
-
