@@ -59,6 +59,9 @@ export const cartSlice = createSlice({
     resetCart: (state) => {
       state.productData = [];
     },
+    setAllProducts: (state, action) => {
+      state.allproducts = action.payload;
+    },
   },
 });
 
@@ -68,5 +71,6 @@ export const {
   decreaseQuantity,
   deleteProduct,
   resetCart,
+  setAllProducts
 } = cartSlice.actions;
 export default cartSlice.reducer;
