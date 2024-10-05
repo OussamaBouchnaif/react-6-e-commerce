@@ -19,7 +19,6 @@ const CartPayment = () => {
     });
     setTotalAmount(amt);
   }, [productData]);
-  // Striep payment
 
 
  
