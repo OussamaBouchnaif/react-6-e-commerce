@@ -1,19 +1,27 @@
-import { Product } from '@/hooks/useProducts'
-import Link from 'next/link';
-import React from 'react'
-import { FaHeart } from 'react-icons/fa6';
-import { HiShoppingCart } from 'react-icons/hi';
-import FormattedPrice from './FormattedPrice';
-import Image from 'next/image';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '@/store/cartSlice';
+import Link from "next/link";
+import React from "react";
+import { FaHeart } from "react-icons/fa6";
+import { HiShoppingCart } from "react-icons/hi";
+import FormattedPrice from "./FormattedPrice";
+import Image from "next/image";
+import { Product } from "@/Types/Product";
+import { useCart } from "@/hooks/useCart";
 
 interface Props {
-    product: Product[];
+  product: Product[];
+}
+
+const Products = ({ product }: Props) => {
+  const { addProductToCart } = useCart();
+
+  if (!product || product.length === 0) {
+    return <p className="text-center text-gray-500">No products available.</p>;
   }
-  
-  const Products = ({ product }: Props) => {
-    const dispatch = useDispatch();
+
+  function dispatch(arg0: void): void {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <div className="w-full px-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
       {product.map(
@@ -39,7 +47,7 @@ interface Props {
                   query: {
                     _id: _id,
                     brand: brand,
-                    category: category, 
+                    category: category,
                     description: description,
                     image: image,
                     isNew: isNew,
@@ -49,25 +57,19 @@ interface Props {
                   },
                 }}
               >
-                <Image className="w-full h-full object-cover scale-90 hover:scale-100 transition-transform duration-300"
+                <Image
+                  className="w-full h-full object-cover scale-90 hover:scale-100 transition-transform duration-300"
                   width={300}
                   height={300}
                   src={image}
-                  alt="productImage">
-
-                </Image>
+                  alt="productImage"
+                ></Image>
               </Link>
               <div className="w-12 h-24 absolute bottom-10 right-0 border-[1px] border-gray-400 bg-white rounded-md flex flex-col translate-x-20 group-hover:translate-x-0 transition-transform duration-300">
-                <span
-                  
-                  className="w-full h-full border-b-[1px] border-b-gray-400 flex items-center justify-center text-xl bg-transparent hover:bg-amazon_yellow cursor-pointer duration-300"
-                >
+                <span className="w-full h-full border-b-[1px] border-b-gray-400 flex items-center justify-center text-xl bg-transparent hover:bg-amazon_yellow cursor-pointer duration-300">
                   <HiShoppingCart />
                 </span>
-                <span
-                 
-                  className="w-full h-full border-b-[1px] border-b-gray-400 flex items-center justify-center text-xl bg-transparent hover:bg-amazon_yellow cursor-pointer duration-300"
-                >
+                <span className="w-full h-full border-b-[1px] border-b-gray-400 flex items-center justify-center text-xl bg-transparent hover:bg-amazon_yellow cursor-pointer duration-300">
                   <FaHeart />
                 </span>
               </div>
@@ -93,23 +95,22 @@ interface Props {
                 {description.substring(0, 120)}
               </p>
               <button
-                onClick={() => 
-                  dispatch(addToCart({
-                    _id : _id,
-                    title:title,
-                    brand:brand,
-                    category:category,
-                    description:description,
-                    image:image,
-                    isNew:isNew,
-                    oldPrice:oldPrice,
-                    price:price,
-                    quantity:1
-                  }))
+                onClick={() =>
+                  addProductToCart({
+                    _id,
+                    title,
+                    brand,
+                    category,
+                    description,
+                    image,
+                    isNew,
+                    oldPrice,
+                    price,
+                  })
                 }
                 className="h-10 font-medium bg-amazon_blue text-white rounded-md hover:bg-amazon_yellow hover:text-black duration-300 mt-2"
               >
-                add to cart
+                Add to cart
               </button>
             </div>
           </div>
@@ -117,6 +118,6 @@ interface Props {
       )}
     </div>
   );
-  }
-  
-  export default Products;
+};
+
+export default Products;
