@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from "./cartSlice";
+import reviewsReducer from "./reviewsSlice"; // Assurez-vous que le chemin est correct
 import {
   persistStore,
   persistReducer,
@@ -12,16 +13,22 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
+// Configuration de la persistance
 const persistConfig = {
   key: "root",
   version: 1,
   storage,
 };
-const persistedReducer = persistReducer(persistConfig, cartReducer);
 
+// Configuration des reducers persistés
+const persistedCartReducer = persistReducer(persistConfig, cartReducer);
+const persistedReviewsReducer = persistReducer(persistConfig, reviewsReducer);
+
+// Configuration du store Redux
 export const store = configureStore({
   reducer: {
-    cart: persistedReducer,
+    cart: persistedCartReducer,
+    reviews: persistedReviewsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -30,8 +37,9 @@ export const store = configureStore({
       },
     }),
 });
+
 export let persistor = persistStore(store);
-// Infer the `RootState` and `AppDispatch` types from the store itself
+
+// Types dérivés pour l'utilisation de Redux dans l'application
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
