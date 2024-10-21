@@ -5,7 +5,8 @@ import useProducts from "@/hooks/useProducts";
 
 
 export default function Home() {
-  const { products, error } = useProducts();
+  const { products, error, loading } = useProducts();
+  
   return (
     <main>
       <div className="max-w-screen-3xl mx-auto">

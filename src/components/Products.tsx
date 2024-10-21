@@ -8,7 +8,7 @@ import { Product } from "@/Types/Product";
 import { useCart } from "@/hooks/useCart";
 
 interface Props {
-  product: Product[];
+  product: Product[] | null;
 }
 
 const Products = ({ product }: Props) => {
@@ -18,9 +18,7 @@ const Products = ({ product }: Props) => {
     return <p className="text-center text-gray-500">No products available.</p>;
   }
 
-  function dispatch(arg0: void): void {
-    throw new Error("Function not implemented.");
-  }
+
 
   return (
     <div className="w-full px-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
