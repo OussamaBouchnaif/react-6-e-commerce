@@ -1,10 +1,6 @@
+import { Review } from "@/Types/Review";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface Review {
-  user: string;
-  comment: string;
-  rating: number;
-}
 
 interface ReviewsState {
   reviewsByProductId: {

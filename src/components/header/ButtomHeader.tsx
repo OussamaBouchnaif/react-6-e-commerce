@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React from "react";
 import { LuMenu } from "react-icons/lu";
 
@@ -6,7 +7,7 @@ export const ButtomHeader = () => {
   return (
     <div className="buttom-header-container">
       <p className="buttom-header-item">
-        <LuMenu className="text-x1"></LuMenu>All
+        <LuMenu className="text-x1"></LuMenu><Link href={"/catalogue"}>All</Link>
       </p>
       <p className="buttom-header-item hidden md:inline-flex">Today's Deals</p>
       <p className="buttom-header-item hidden md:inline-flex">Customer Service</p>

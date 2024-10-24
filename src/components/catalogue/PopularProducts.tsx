@@ -1,23 +1,22 @@
-import Link from "next/link";
-import React from "react";
-import { FaHeart } from "react-icons/fa6";
-import { HiShoppingCart } from "react-icons/hi";
-import FormattedPrice from "./FormattedPrice";
-import Image from "next/image";
 import { Product } from "@/Types/Product";
-import { useCart } from "@/hooks/useCart";
-import { ProductSkeleton } from "./skeleton/ProductSkeleton";
+import { useCart } from "@/hooks/useCart"; // Assurez-vous d'importer votre hook useCart
+import Link from "next/link";
+import Image from "next/image";
+import { HiShoppingCart } from "react-icons/hi";
+import { FaHeart } from "react-icons/fa";
+import FormattedPrice from "@/components/FormattedPrice"; // Assurez-vous que ce composant existe pour formater les prix
+import { ProductSkeleton } from "../skeleton/ProductSkeleton";
 
 interface Props {
-  product: Product[] | null;
+  products: Product[] | null;
 }
 
-const Products = ({ product }: Props) => {
+const PopularProducts = ({ products }: Props) => {
   const { addProductToCart } = useCart();
-  
-  const isLoading = !product || product.length === 0;
 
-  // Display skeletons if loading
+  const isLoading = !products || products.length === 0;
+
+  // Affichage des skeletons en cas de chargement
   if (isLoading) {
     return (
       <div className="w-full px-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
@@ -30,7 +29,7 @@ const Products = ({ product }: Props) => {
 
   return (
     <div className="w-full px-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-      {product.map(
+      {products.map(
         ({
           _id,
           title,
@@ -126,5 +125,4 @@ const Products = ({ product }: Props) => {
   );
 };
 
-
-export default Products;
+export default PopularProducts;

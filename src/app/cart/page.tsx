@@ -1,8 +1,9 @@
 "use client";
 
-import CartPayment from "@/components/CartPayment";
-import CartProduct from "@/components/CartProduct";
-import ResetCart from "@/components/ResetCart";
+
+import CartPayment from "@/components/cart/CartPayment";
+import CartProduct from "@/components/cart/CartProduct";
+import ResetCart from "@/components/cart/ResetCart";
 import { StoreProduct } from "@/store/cartSlice";
 import { RootState } from "@/store/store";
 import Link from "next/link";

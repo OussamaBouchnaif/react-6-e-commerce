@@ -1,9 +1,10 @@
 import { SiMediamarkt } from "react-icons/si";
-import FormattedPrice from "./FormattedPrice";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { StoreProduct } from "@/store/cartSlice";
 import { RootState } from "@/store/store";
+import FormattedPrice from "../FormattedPrice";
 
 
 const CartPayment = () => {

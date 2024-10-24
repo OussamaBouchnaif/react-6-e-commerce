@@ -14,11 +14,9 @@ export interface StoreProduct {
 }
 interface CartState {
   productData: StoreProduct[];
-  allproducts: StoreProduct[];
 }
 const initialState: CartState = {
   productData: [],
-  allproducts: [],
 };
 
 export const cartSlice = createSlice({
@@ -59,9 +57,6 @@ export const cartSlice = createSlice({
     resetCart: (state) => {
       state.productData = [];
     },
-    setAllProducts: (state, action) => {
-      state.allproducts = action.payload;
-    },
   },
 });
 
@@ -71,6 +66,5 @@ export const {
   decreaseQuantity,
   deleteProduct,
   resetCart,
-  setAllProducts
 } = cartSlice.actions;
 export default cartSlice.reducer;
