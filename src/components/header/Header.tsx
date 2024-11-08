@@ -21,7 +21,7 @@ export const Header = () => {
           {/* Logo */}
           <Link href={"/"} className="header-item justify-center">
             <Image
-              className="w-28 object-cover mt-1"
+              className="w-44 object-cover mt-1"
               src={logo}
               alt="logoImg"
             />
