@@ -81,7 +81,7 @@ const Products = ({ product }: Props) => {
               </div>
               {isNew && (
                 <p className="absolute top-0 right-0 text-amazon_blue font-medium text-xs tracking-wide animate-bounce">
-                  !save <FormattedPrice amount={oldPrice - price} />
+                  <FormattedPrice amount={oldPrice - price} />
                 </p>
               )}
             </div>
