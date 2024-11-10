@@ -1,4 +1,4 @@
-import { resetCart } from "@/store/cartSlice";
+import { resetCart } from "@/store/slices/cartSlice";
 import { useDispatch } from "react-redux";
 
 const ResetCart = () => {

@@ -17,7 +17,7 @@ const Products = ({ product }: Props) => {
   
   const isLoading = !product || product.length === 0;
 
-  // Display skeletons if loading
+
   if (isLoading) {
     return (
       <div className="w-full px-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
