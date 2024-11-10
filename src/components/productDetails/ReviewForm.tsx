@@ -1,4 +1,4 @@
-import { addReview } from "@/store/reviewsSlice";
+import { addReview } from "@/store/slices/reviewsSlice";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 

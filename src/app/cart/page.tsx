@@ -4,7 +4,7 @@
 import CartPayment from "@/components/cart/CartPayment";
 import CartProduct from "@/components/cart/CartProduct";
 import ResetCart from "@/components/cart/ResetCart";
-import { StoreProduct } from "@/store/cartSlice";
+import { StoreProduct } from "@/store/slices/cartSlice";
 import { RootState } from "@/store/store";
 import Link from "next/link";
 import { useSelector } from "react-redux";

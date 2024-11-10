@@ -8,7 +8,7 @@ import {
   decreaseQuantity,
   deleteProduct,
   increaseQuantity,
-} from "@/store/cartSlice";
+} from "@/store/slices/cartSlice";
 interface Item {
   brand: string;
   category: string;

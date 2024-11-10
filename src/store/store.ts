@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import cartReducer from "./cartSlice";
-import reviewsReducer from "./reviewsSlice"; // Assurez-vous que le chemin est correct
+import cartReducer from "./slices/cartSlice";
+import reviewsReducer from "./slices/reviewsSlice"; // Assurez-vous que le chemin est correct
 import {
   persistStore,
   persistReducer,
