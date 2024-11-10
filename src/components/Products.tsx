@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Product } from "@/Types/Product";
 import { useCart } from "@/hooks/useCart";
 import { ProductSkeleton } from "./skeleton/ProductSkeleton";
+import Loader from "./loader/Loader";
 
 interface Props {
   product: Product[] | null;
@@ -14,7 +15,7 @@ interface Props {
 
 const Products = ({ product }: Props) => {
   const { addProductToCart } = useCart();
-  
+
   const isLoading = !product || product.length === 0;
 
   // Display skeletons if loading
@@ -22,7 +23,8 @@ const Products = ({ product }: Props) => {
     return (
       <div className="w-full px-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
         {Array.from({ length: 8 }).map((_, index) => (
-          <ProductSkeleton key={index} />
+          // <ProductSkeleton key={index} />
+          <Loader />
         ))}
       </div>
     );
