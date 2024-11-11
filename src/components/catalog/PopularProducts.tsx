@@ -1,10 +1,10 @@
 import { Product } from "@/Types/Product";
-import { useCart } from "@/hooks/useCart"; // Assurez-vous d'importer votre hook useCart
+import { useCart } from "@/hooks/useCart"; 
 import Link from "next/link";
 import Image from "next/image";
 import { HiShoppingCart } from "react-icons/hi";
 import { FaHeart } from "react-icons/fa";
-import FormattedPrice from "@/components/FormattedPrice"; // Assurez-vous que ce composant existe pour formater les prix
+import FormattedPrice from "@/components/FormattedPrice"; 
 import { ProductSkeleton } from "../skeleton/ProductSkeleton";
 import Loader from "../loader/Loader";
 

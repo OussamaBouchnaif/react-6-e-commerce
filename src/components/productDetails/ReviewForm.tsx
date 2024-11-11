@@ -1,29 +1,30 @@
-import { addReview } from "@/store/reviewsSlice";
+import { reviewService } from "@/services/reviewService";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-
+import { useSession } from "next-auth/react";
 
 interface ReviewFormProps {
-    productId: string;
-  }
+  productId: string;
+}
 
-export const ReviewForm = ({productId}:ReviewFormProps) => {
-    const dispatch = useDispatch();
-    const [newReview, setNewReview] = useState("");
-    const [newRating, setNewRating] = useState(5);
-  
-    const handleSubmit = () => {
-      if (newReview.trim() === "") return;
-      dispatch(
-        addReview({
-          productId,
-          review: { comment: newReview, rating: newRating },
-        })
-      );
-      setNewReview("");
-      setNewRating(5);
-    };
-  
+export const ReviewForm = ({ productId }: ReviewFormProps) => {
+  const dispatch = useDispatch();
+  const [newReview, setNewReview] = useState("");
+  const [newRating, setNewRating] = useState(5);
+  const { data: session } = useSession();
+  const handleSubmit = () => {
+    if (newReview.trim() === "") return;
+
+    reviewService.addReview(
+      dispatch,
+      productId,
+      { comment: newReview, rating: newRating },
+      session?.user?.name ?? 'anonym',
+    );
+
+    setNewReview("");
+    setNewRating(5);
+  };
 
   return (
     <div className="mt-6">

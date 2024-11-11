@@ -2,7 +2,7 @@ import { SiMediamarkt } from "react-icons/si";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { StoreProduct } from "@/store/cartSlice";
+import { StoreProduct } from "@/store/slices/cartSlice";
 import { RootState } from "@/store/store";
 import FormattedPrice from "../FormattedPrice";
 
@@ -40,9 +40,9 @@ const CartPayment = () => {
           <FormattedPrice amount={totalAmount} />
         </span>
       </p>
-   
+        
         <div className="flex flex-col items-center">
-          <button className="w-full h-10 text-sm font-semibold bg-amazon_blue bg-opacity-50 text-white rounded-lg cursor-not-allowed">
+          <button className="w-full h-10 text-sm font-semibold bg-amazon_blue bg-opacity-50 text-white rounded-lg ">
             Proceed to Buy
           </button>
           <p className="text-xs mt-1 text-red-500 font-semibold animate-bounce">

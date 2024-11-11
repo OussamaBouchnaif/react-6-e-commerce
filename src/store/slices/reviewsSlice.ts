@@ -1,7 +1,6 @@
 import { Review } from "@/Types/Review";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-
 interface ReviewsState {
   reviewsByProductId: {
     [productId: string]: Review[];
@@ -18,15 +17,15 @@ export const reviewsSlice = createSlice({
   reducers: {
     addReview: (
       state,
-      action: PayloadAction<{ productId: string; review: Omit<Review, "user"> }>
+      action: PayloadAction<{ productId: string; review: Omit<Review, "user">; user: string }>
     ) => {
-      const { productId, review } = action.payload;
+      const { productId, review, user } = action.payload;
 
       if (!state.reviewsByProductId[productId]) {
         state.reviewsByProductId[productId] = [];
       }
       state.reviewsByProductId[productId].push({
-        user: "Anonymous",
+        user,
         ...review,
       });
     },

@@ -1,4 +1,4 @@
-import { addToCart } from "@/store/cartSlice";
+import { addToCart } from "@/store/slices/cartSlice";
 import { Product } from "@/Types/Product";
 import { useDispatch } from "react-redux";
 
