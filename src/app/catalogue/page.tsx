@@ -3,7 +3,6 @@
 import Banner from "@/components/catalog/Banner";
 import CategoriesMenu from "@/components/catalog/CategoriesMenu";
 import PopularProducts from "@/components/catalog/PopularProducts";
-import { Header } from "@/components/header/Header";
 import useProducts from "@/hooks/useProducts";
 
 export default function CataloguePage() {
