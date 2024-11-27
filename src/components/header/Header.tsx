@@ -9,10 +9,12 @@ import CartIcon from "../../images/cartIcon.png";
 import Link from "next/link";
 import { RootState } from "@/store/store";
 import { useSelector } from "react-redux";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export const Header = () => {
+  const { data: session } = useSession();
   const { productData } = useSelector((state: RootState) => state.cart);
-
+  console.log(session);
   const totalItems = productData.reduce((acc, item) => acc + item.quantity, 0);
   return (
     <>
@@ -50,17 +52,26 @@ export const Header = () => {
 
           {/* Account & Lists */}
           <div className="header-text header-item">
-            <p>Hello</p>
-            <p className="text-white font-bold flex items-center">
-              Account & Lists <BiCaretDown />
-            </p>
-          </div>
-
-          {/* Marked & Favorite */}
-          <div className="header-text header-item">
-            <p>Marked</p>
-            <p>& Favorite</p>
-          </div>
+      {session ? (
+        <>
+          <p className="text-white font-bold flex items-center">
+            Bonjour, {session.user?.name} <BiCaretDown />
+          </p>
+          
+        </>
+      ) : (
+        <>
+          <p>
+            <Link href="/signin" className="text-white font-bold">
+              Se connecter
+            </Link>
+          </p>
+          <p className="text-white font-bold flex items-center">
+            Account & Lists <BiCaretDown />
+          </p>
+        </>
+      )}
+    </div>
 
           {/* Cart Icon */}
           <Link href={"/cart"} className="header-item relative">

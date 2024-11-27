@@ -6,6 +6,7 @@ import { HiShoppingCart } from "react-icons/hi";
 import { FaHeart } from "react-icons/fa";
 import FormattedPrice from "@/components/FormattedPrice"; 
 import { ProductSkeleton } from "../skeleton/ProductSkeleton";
+import Loader from "../loader/Loader";
 
 interface Props {
   products: Product[] | null;
@@ -21,7 +22,8 @@ const PopularProducts = ({ products }: Props) => {
     return (
       <div className="w-full px-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
         {Array.from({ length: 8 }).map((_, index) => (
-          <ProductSkeleton key={index} />
+          // <ProductSkeleton key={index} />
+          <Loader />
         ))}
       </div>
     );
