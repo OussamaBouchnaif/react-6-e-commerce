@@ -1,21 +1,42 @@
 "use client";
 
-import Banner from "@/components/catalog/Banner";
+import Banner from "@/components/Banner";
 import CategoriesMenu from "@/components/catalog/CategoriesMenu";
 import PopularProducts from "@/components/catalog/PopularProducts";
 import useProducts from "@/hooks/useProducts";
+import { filterProducts } from "@/services/productFilter";
+import { Filters } from "@/Types/Filters";
+import { useState } from "react";
 
 export default function CataloguePage() {
   const { products, error, loading } = useProducts();
+  const [filters, setFilters] = useState<Filters>({
+    minPrice: 0,
+    maxPrice: 500,
+    colors: [],
+    brand: "all",
+    category: "all",
+    isNew: false,
+    rating: null,
+  });
+
+  const filteredProducts = products ? filterProducts(products, filters) : [];
+
   return (
     <div>
       <main className="max-w-screen-2xl mx-auto px-4">
         <div className="flex">
-          <CategoriesMenu />
+          <CategoriesMenu filters={filters} setFilters={setFilters} />
           <div className="flex-1 mt-4">
             <Banner />
             <div className="mt-3">
-              <PopularProducts products={products} />
+              {filteredProducts.length === 0 ? (
+                <div className="text-center text-red-500 font-semibold">
+                  No products match your filters. Please adjust your criteria.
+                </div>
+              ) : (
+                <PopularProducts products={filteredProducts} />
+              )}
             </div>
           </div>
         </div>
