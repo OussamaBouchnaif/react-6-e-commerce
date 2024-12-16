@@ -9,14 +9,17 @@ import { persistor, store } from "@/store/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { SessionProvider } from "next-auth/react";
+import { Session } from "next-auth";
 
-export default function RootLayout({
+
+export default async function RootLayout({
   children,
   session,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-  session: any;
-}>) {
+  session?: Session;
+}) {
+
   return (
     <html lang="en">
       <body>
@@ -34,3 +37,4 @@ export default function RootLayout({
     </html>
   );
 }
+
