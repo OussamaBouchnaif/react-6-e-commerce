@@ -1,6 +1,6 @@
 import { SiMediamarkt } from "react-icons/si";
 
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { StoreProduct } from "@/store/slices/cartSlice";
 import { RootState } from "@/store/store";

@@ -2,13 +2,9 @@
 import Banner from "@/components/Banner";
 import Products from "@/components/Products";
 import useProducts from "@/hooks/useProducts";
-import { useSession } from "next-auth/react";
-
 
 export default function Home() {
   const { products, error, loading } = useProducts();
-  const { data: session } = useSession();
-
   return (
     <main>
       <div className="max-w-screen-3xl mx-auto">
@@ -24,4 +20,3 @@ export default function Home() {
     </main>
   );
 }
-

@@ -1,3 +1,20 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript"
+  ],
+  "rules": {
+    // Interdit formellement l'utilisation de variables non utilisées
+    "@typescript-eslint/no-unused-vars": ["error"],
+
+    // Interdit l'usage explicite de 'any'
+    "@typescript-eslint/no-explicit-any": ["error"],
+
+    // Exige de toujours avoir une prop 'key' dans les listes .map
+    "react/jsx-key": ["error"],
+
+    // Autres règles possibles :
+    // "no-console": ["error"],
+    // "@typescript-eslint/ban-ts-comment": ["error"]
+  }
 }

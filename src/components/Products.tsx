@@ -6,7 +6,6 @@ import FormattedPrice from "./FormattedPrice";
 import Image from "next/image";
 import { Product } from "@/Types/Product";
 import { useCart } from "@/hooks/useCart";
-import { ProductSkeleton } from "./skeleton/ProductSkeleton";
 import Loader from "./loader/Loader";
 
 interface Props {
@@ -22,8 +21,7 @@ const Products = ({ product }: Props) => {
   if (isLoading) {
     return (
       <div className="w-full px-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-        {Array.from({ length: 8 }).map((_, index) => (
-          // <ProductSkeleton key={index} />
+        {Array.from({ length: 8 }).map(() => (
           <Loader />
         ))}
       </div>
