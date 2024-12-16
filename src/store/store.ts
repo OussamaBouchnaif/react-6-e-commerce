@@ -38,7 +38,7 @@ export const store = configureStore({
     }),
 });
 
-export let persistor = persistStore(store);
+export const persistor = persistStore(store);
 
 // Types dérivés pour l'utilisation de Redux dans l'application
 export type RootState = ReturnType<typeof store.getState>;

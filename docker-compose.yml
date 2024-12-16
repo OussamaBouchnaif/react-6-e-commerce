@@ -1,24 +1,33 @@
-version: "3.9"
 services:
-  nextjs-app:
+  frontend:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
     environment:
-      - NEXT_PUBLIC_KEYCLOAK_URL=http://localhost:8080
-      - NEXT_PUBLIC_KEYCLOAK_REALM=your-realm
-      - NEXT_PUBLIC_KEYCLOAK_CLIENT_ID=nextjs-client
+      - NEXT_PUBLIC_KEYCLOAK_URL
+      - NEXT_PUBLIC_KEYCLOAK_REALM
+      - NEXT_PUBLIC_KEYCLOAK_CLIENT_ID
     depends_on:
       - keycloak
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - inner_net
 
   keycloak:
     image: quay.io/keycloak/keycloak:22.0.0
     environment:
-      - KC_DB=dev-file
-      - KEYCLOAK_ADMIN=admin
-      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_DB
+      - KEYCLOAK_ADMIN
+      - KEYCLOAK_ADMIN_PASSWORD
     ports:
       - "8080:8080"
     command: start-dev
+    networks:
+      - inner_net
+
+networks:
+  inner_net:

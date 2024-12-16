@@ -1,4 +1,3 @@
-import { useSearchParams } from "next/navigation";
 import React from "react";
 import { FaHeart } from "react-icons/fa6";
 import { HiShoppingCart } from "react-icons/hi";

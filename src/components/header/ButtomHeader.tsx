@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React from "react";
 import { LuMenu } from "react-icons/lu";
-import { useSession, signIn, signOut } from "next-auth/react";
+import {  signOut } from "next-auth/react";
 export const ButtomHeader = () => {
   return (
     <div className="buttom-header-container">

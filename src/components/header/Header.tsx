@@ -9,7 +9,7 @@ import CartIcon from "../../images/cartIcon.png";
 import Link from "next/link";
 import { RootState } from "@/store/store";
 import { useSelector } from "react-redux";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 export const Header = () => {
   const { data: session } = useSession();
@@ -62,7 +62,7 @@ export const Header = () => {
       ) : (
         <>
           <p>
-            <Link href="/signin" className="text-white font-bold">
+            <Link href="/api/auth/signin" className="text-white font-bold">
               Se connecter
             </Link>
           </p>

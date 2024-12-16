@@ -9,7 +9,7 @@ import { Filters } from "@/Types/Filters";
 import { useState } from "react";
 
 export default function CataloguePage() {
-  const { products, error, loading } = useProducts();
+  const { products } = useProducts();
   const [filters, setFilters] = useState<Filters>({
     minPrice: 0,
     maxPrice: 500,
