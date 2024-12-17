@@ -5,10 +5,10 @@ import Image from "next/image";
 import { HiShoppingCart } from "react-icons/hi";
 import { FaHeart } from "react-icons/fa";
 import FormattedPrice from "@/components/FormattedPrice"; 
-import Loader from "../loader/Loader";
+
 
 interface Props {
-  products: Product[] | null;
+  products: Product[];
 }
 
 const PopularProducts = ({ products }: Props) => {
@@ -19,10 +19,7 @@ const PopularProducts = ({ products }: Props) => {
   if (isLoading) {
     return (
       <div className="w-full px-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-        {Array.from({ length: 8 }).map(() => (
 
-          <Loader />
-        ))}
       </div>
     );
   }

@@ -1,6 +1,8 @@
 import { Filters } from "@/Types/Filters";
+import { Product } from "@/Types/Product";
 
-export const filterProducts = (products: any[], filters: Filters) => {
+
+export const filterProducts = (products: Product[], filters: Filters): Product[] => {
   return products.filter((product) => {
     if (product.price < filters.minPrice || product.price > filters.maxPrice) {
       return false;
@@ -27,3 +29,4 @@ export const filterProducts = (products: any[], filters: Filters) => {
     return true;
   });
 };
+

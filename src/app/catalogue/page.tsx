@@ -7,6 +7,7 @@ import useProducts from "@/hooks/useProducts";
 import { filterProducts } from "@/services/productFilter";
 import { Filters } from "@/Types/Filters";
 import { useState } from "react";
+import {Product } from "@/Types/Product";
 
 export default function CataloguePage() {
   const { products } = useProducts();
@@ -20,7 +21,7 @@ export default function CataloguePage() {
     rating: null,
   });
 
-  const filteredProducts = products ? filterProducts(products, filters) : [];
+  const filteredProducts: Product[] = products ? filterProducts(products, filters) : [];
 
   return (
     <div>

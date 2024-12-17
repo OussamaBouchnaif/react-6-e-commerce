@@ -8,33 +8,25 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { persistor, store } from "@/store/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import { SessionProvider } from "next-auth/react";
-import { Session } from "next-auth";
 
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
-  session,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-  session?: Session;
-}) {
-
+}>) {
   return (
     <html lang="en">
       <body>
         <Provider store={store}>
           <PersistGate persistor={persistor} loading={null}>
-            <SessionProvider session={session}>
-              <Header />
-              <ButtomHeader />
-              {children}
-              <Footer />
-            </SessionProvider>
+            <Header />
+            <ButtomHeader />
+            {children}
+            <Footer />
           </PersistGate>
         </Provider>
       </body>
     </html>
   );
 }
-

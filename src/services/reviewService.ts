@@ -1,5 +1,6 @@
 import { addReview } from "@/store/slices/reviewsSlice";
-import  { AppDispatch }  from "@/store";
+import { AppDispatch } from "@/store/store";
+
 
 export const reviewService = {
     addReview: (
