@@ -21,9 +21,10 @@ const Products = ({ product }: Props) => {
   if (isLoading) {
     return (
       <div className="w-full px-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-        {Array.from({ length: 8 }).map(() => (
-          <Loader />
+        {Array.from({ length: 8 }).map((_, index) => (
+          <Loader key={index} />
         ))}
+
       </div>
     );
   }

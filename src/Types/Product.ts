@@ -1,11 +1,11 @@
 export interface Product {
-    brand: string;
-    category: string;
-    description: string;
-    image: string;
-    isNew: boolean;
-    oldPrice: number;
-    price: number;
-    title: string;
-    _id: number;
+  _id: string;
+  title: string;
+  brand: string;
+  category: string;
+  description: string;
+  image: string;
+  oldPrice: number;
+  price: number;
+  isNew?: boolean;
   }

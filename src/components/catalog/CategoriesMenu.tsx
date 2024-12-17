@@ -3,12 +3,12 @@ import React from "react";
 
 interface CategoriesMenuProps {
   filters: Filters;
-  setFilters: (filters: any) => void;
+  setFilters: (newFilters: Filters) => void;
 }
 
 
 export const CategoriesMenu = ({ filters, setFilters }:CategoriesMenuProps) => {
-  const handleInputChange = (key: string, value: any) => {
+  const handleInputChange = <K extends keyof Filters>(key: K, value: Filters[K]) => {
     setFilters({
       ...filters,
       [key]: value,
