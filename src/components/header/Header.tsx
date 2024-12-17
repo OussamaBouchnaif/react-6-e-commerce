@@ -4,17 +4,15 @@ import React from "react";
 import logo from "../../images/logo.png";
 import { FaLocationDot } from "react-icons/fa6";
 import { HiOutlineSearch } from "react-icons/hi";
-import { BiCaretDown } from "react-icons/bi";
 import CartIcon from "../../images/cartIcon.png";
 import Link from "next/link";
 import { RootState } from "@/store/store";
 import { useSelector } from "react-redux";
-import { useSession } from "next-auth/react";
+
 
 export const Header = () => {
-  const { data: session } = useSession();
+
   const { productData } = useSelector((state: RootState) => state.cart);
-  console.log(session);
   const totalItems = productData.reduce((acc, item) => acc + item.quantity, 0);
   return (
     <>
@@ -51,7 +49,7 @@ export const Header = () => {
           </div>
 
           {/* Account & Lists */}
-          <div className="header-text header-item">
+         {/*  <div className="header-text header-item">
       {session ? (
         <>
           <p className="text-white font-bold flex items-center">
@@ -71,7 +69,7 @@ export const Header = () => {
           </p>
         </>
       )}
-    </div>
+          </div> */}
 
           {/* Cart Icon */}
           <Link href={"/cart"} className="header-item relative">
