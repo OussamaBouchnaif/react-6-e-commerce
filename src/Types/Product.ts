@@ -1,4 +1,5 @@
 export interface Product {
+  name: any;
   _id: string;
   title: string;
   brand: string;
@@ -8,4 +9,4 @@ export interface Product {
   oldPrice: number;
   price: number;
   isNew?: boolean;
-  }
+}
